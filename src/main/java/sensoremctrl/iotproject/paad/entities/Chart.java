@@ -1,50 +1,36 @@
-package sensoremctrl.iotproject.paad.entities;
-
-public class Chart {
-
-    private int id;
-    private String time_stamp;
-    private String date_stamp;
-
-    public Chart() {
-    }
-
-    public Chart(int id, String time_stamp, String date_stamp) {
-        this.id = id;
-        this.time_stamp = time_stamp;
-        this.date_stamp = date_stamp;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getTime_stamp() {
-        return time_stamp;
-    }
-
-    public void setTime_stamp(String time_stamp) {
-        this.time_stamp = time_stamp;
-    }
-
-    public String getDate_stamp() {
-        return date_stamp;
-    }
-
-    public void setDate_stamp(String date_stamp) {
-        this.date_stamp = date_stamp;
-    }
-
-    @Override
-    public String toString() {
-        return "Chart{" +
-                "id=" + id +
-                ", time_stamp='" + time_stamp + '\'' +
-                ", date_stamp='" + date_stamp + '\'' +
-                '}';
-    }
-}
+//package sensoremctrl.iotproject.paad.entities;
+//
+//import javax.persistence.Entity;
+//import javax.persistence.Id;
+//import javax.persistence.Table;
+//import java.io.Serializable;
+//import java.sql.Timestamp;
+//
+//@Entity
+//@Table(name = "chart")
+//public class Chart implements Serializable {
+//
+//    @Id
+//    private int chart_id;
+//
+//    private Timestamp date_and_time;
+//
+//    public Chart() {
+//    }
+//
+//    public int getChart_id() {
+//        return chart_id;
+//    }
+//
+//    public void setChart_id(int chart_id) {
+//        this.chart_id = chart_id;
+//    }
+//
+//    public Timestamp getDate_and_time() {
+//        return date_and_time;
+//    }
+//
+//    public void setDate_and_time(Timestamp date_and_time) {
+//        this.date_and_time = date_and_time;
+//    }
+//}
