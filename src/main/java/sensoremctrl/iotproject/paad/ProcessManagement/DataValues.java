@@ -1,33 +1,30 @@
 package sensoremctrl.iotproject.paad.ProcessManagement;
 
-import java.util.List;
-
-public class DataValues{
+public class DataValues {
     private String temperature;
     private String humidity;
     private String timeStamp;
+
+
+    public DataValues(String temperature, String humidity, String timeStamp) {
+        this.temperature = temperature;
+        this.humidity = humidity;
+        this.timeStamp = timeStamp;
+    }
 
     public String getTemperature() {
         return temperature;
     }
 
-    public void setTemperature(String temperature) {
-        this.temperature = temperature;
-    }
 
     public String getHumidity() {
         return humidity;
     }
 
-    public void setHumidity(String humidity) {
-        this.humidity = humidity;
-    }
 
     public String getTimeStamp() {
         return timeStamp;
     }
 
-    public void setTimeStamp(String timeStamp) {
-        this.timeStamp = timeStamp;
-    }
+
 }
