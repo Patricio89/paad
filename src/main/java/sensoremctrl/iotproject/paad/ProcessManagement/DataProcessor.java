@@ -14,7 +14,6 @@ public class DataProcessor {
     }
 
     public void parseHumidity(){
-
     }
 
 // Postponed due to direct implementation of correct types.

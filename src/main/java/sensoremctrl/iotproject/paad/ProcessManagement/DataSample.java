@@ -1,25 +1,27 @@
 package sensoremctrl.iotproject.paad.ProcessManagement;
 
+import java.util.Date;
+
 public class DataSample implements DataRetriver{
 
-    private DataValues dataValues;
+    private DataValue dataValue;
 
-    public DataSample(String temperature, String humidity, String timeStamp){
-        dataValues = new DataValues(temperature, humidity, timeStamp);
+    public DataSample(int temperature, int humidity, Date timeStamp){
+        dataValue = new DataValue(temperature, humidity, timeStamp);
     }
 
     @Override
-    public String getTemperature() {
-        return null;
+    public int getTemperature() {
+        return dataValue.getTemperature();
     }
 
     @Override
-    public String getHumidity() {
-        return null;
+    public int getHumidity() {
+        return dataValue.getHumidity();
     }
 
     @Override
-    public String getTimeStamp() {
-        return null;
+    public Date getTimeStamp() {
+        return dataValue.getTimeStamp();
     }
 }

@@ -1,9 +1,9 @@
 package sensoremctrl.iotproject.paad.ProcessManagement;
 
-import java.util.List;
+import java.util.Date;
 
 public interface DataRetriver {
-    String getTemperature();
-    String getHumidity();
-    String getTimeStamp();
+    int getTemperature();
+    int getHumidity();
+    Date getTimeStamp();
 }
