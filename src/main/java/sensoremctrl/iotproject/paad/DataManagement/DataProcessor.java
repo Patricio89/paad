@@ -1,4 +1,4 @@
-package sensoremctrl.iotproject.paad.ProcessManagement;
+package sensoremctrl.iotproject.paad.DataManagement;
 
 public class DataProcessor {
 

@@ -1,13 +1,10 @@
-package sensoremctrl.iotproject.paad.fileconfig;
+package sensoremctrl.iotproject.paad.FileManagement;
 
 import com.opencsv.CSVReader;
-import org.springframework.context.annotation.Bean;
-import sensoremctrl.iotproject.paad.ProcessManagement.DataValue;
+import sensoremctrl.iotproject.paad.DataManagement.DataValue;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
