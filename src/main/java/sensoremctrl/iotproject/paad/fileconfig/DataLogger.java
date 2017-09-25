@@ -1,35 +1,45 @@
 package sensoremctrl.iotproject.paad.fileconfig;
 
 import com.opencsv.CSVReader;
+import com.opencsv.bean.ColumnPositionMappingStrategy;
+import com.opencsv.bean.CsvToBean;
+import com.opencsv.bean.CsvToBeanBuilder;
+import net.sf.jsefa.Deserializer;
+import net.sf.jsefa.Serializer;
+import net.sf.jsefa.csv.CsvIOFactory;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import sensoremctrl.iotproject.paad.ProcessManagement.DataValue;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
+import org.springframework.stereotype.Component;
+import sensoremctrl.iotproject.paad.entities.Chart;
+import sensoremctrl.iotproject.paad.entities.CsvData;
+import sensoremctrl.iotproject.paad.entities.Humidity;
+import sensoremctrl.iotproject.paad.entities.Temperature;
+import java.io.*;
+import java.sql.Date;
+import java.util.*;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-
+@Component
 public class DataLogger {
 
-
-    public List<DataValue> readCsv() {
-        String csvFile = "sensor_data.csv";
-
-
-        CSVReader csvReader = null;
+    @Bean
+    public List<CsvData> readCsv() {
+        final String sensorFile = "src/main/resources/sensor_data.csv";
+        List<CsvData> csvData = null;
         try {
-            csvReader = new CSVReader(new FileReader(csvFile));
-            String[] line;
-            while ((line = csvReader.readNext()) != null) {
-                List<String> csvList = Arrays.asList(line);
-                System.out.println(csvList);
-            }
-        } catch (IOException e) {
+            csvData = new CsvToBeanBuilder<CsvData>(new FileReader(sensorFile))
+                    .withType(CsvData.class)
+                    .build()
+                    .parse();
+
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
 
+        return csvData;
     }
 }

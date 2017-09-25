@@ -1,19 +1,40 @@
 package sensoremctrl.iotproject.paad.entities;
 
-import java.sql.Date;
 
-public class Chart {
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.List;
 
+@Entity
+@Table(name = "chart")
+public class Chart implements Serializable {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "chart_id")
     private int chart_id;
-    private Date dateTime;
+
+    private String clockdate;
+
+    @OneToMany(mappedBy = "chart", cascade = CascadeType.ALL)
+    private List<Temperature> temperatures;
+
+    @OneToMany(mappedBy = "chart", cascade = CascadeType.ALL)
+    private List<Humidity> humidities;
+
 
     public Chart() {
     }
 
-    public Chart(int chart_id, Date dateTime) {
-        this.chart_id = chart_id;
-        this.dateTime = dateTime;
+    public Chart(String clockdate) {
+        this.clockdate = clockdate;
+    }
+
+    public Chart(List<Temperature> temperatures, List<Humidity> humidities, String clockdate) {
+        this.temperatures = temperatures;
+        this.humidities = humidities;
+        this.clockdate = clockdate;
+
     }
 
     public int getChart_id() {
@@ -24,11 +45,35 @@ public class Chart {
         this.chart_id = chart_id;
     }
 
-    public Date getDateTime() {
-        return dateTime;
+    public String getclockdate() {
+        return clockdate;
     }
 
-    public void setDateTime(Date dateTime) {
-        this.dateTime = dateTime;
+    public void setclockdate(String clockdate) {
+        this.clockdate = clockdate;
+    }
+
+
+    public List<Temperature> getTemperatures() {
+        return temperatures;
+    }
+
+    public void setTemperatures(List<Temperature> temperatures) {
+        this.temperatures = temperatures;
+    }
+
+    public List<Humidity> getHumidities() {
+        return humidities;
+    }
+
+    public void setHumidities(List<Humidity> humidities) {
+        this.humidities = humidities;
+    }
+
+    @Override
+    public String toString() {
+        return "Chart{" +
+                "clockdate='" + clockdate + '\'' +
+                '}';
     }
 }
