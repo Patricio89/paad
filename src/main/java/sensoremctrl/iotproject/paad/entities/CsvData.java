@@ -2,9 +2,6 @@ package sensoremctrl.iotproject.paad.entities;
 
 import com.opencsv.bean.CsvBindByName;
 import net.sf.jsefa.csv.annotation.CsvDataType;
-import net.sf.jsefa.csv.annotation.CsvField;
-import org.springframework.web.bind.annotation.Mapping;
-import sensoremctrl.iotproject.paad.interfaces.SensorData;
 
 import java.io.Serializable;
 
