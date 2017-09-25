@@ -1,24 +1,16 @@
 package sensoremctrl.iotproject.paad;
 
-import org.apache.commons.collections.ArrayStack;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 import sensoremctrl.iotproject.paad.entities.Chart;
 import sensoremctrl.iotproject.paad.entities.CsvData;
 import sensoremctrl.iotproject.paad.entities.Humidity;
 import sensoremctrl.iotproject.paad.entities.Temperature;
-import sensoremctrl.iotproject.paad.fileconfig.DataLogger;
-import sensoremctrl.iotproject.paad.model.ChartRepository;
-
-import javax.persistence.EntityManager;
+import sensoremctrl.iotproject.paad.FileManagement.DataLogger;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @SpringBootApplication
