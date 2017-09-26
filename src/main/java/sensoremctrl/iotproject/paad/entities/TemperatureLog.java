@@ -1,46 +1,44 @@
 package sensoremctrl.iotproject.paad.entities;
 
-import com.opencsv.bean.CsvBindByName;
-
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "temperature")
-public class Temperature implements Serializable {
+@Table(name = "Temperature")
+public class TemperatureLog implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int temp_id;
+    private int temperatureId;
 
     private int temperature;
 
-    private Chart chart;
+    private SensorChart chart;
 
-    public Temperature() {
+    public TemperatureLog() {
     }
 
-    public Temperature(int temperature) {
+    public TemperatureLog(int temperature) {
         this.temperature = temperature;
     }
 
-    public Temperature(Chart chart) {
+    public TemperatureLog(SensorChart chart) {
         this.chart = chart;
     }
 
-    public Temperature(int temperature, Chart chart) {
+    public TemperatureLog(int temperature, SensorChart chart) {
         this.temperature = temperature;
         this.chart = chart;
     }
 
 
 
-    public int getTemp_id() {
-        return temp_id;
+    public int getTemperatureId() {
+        return temperatureId;
     }
 
-    public void setTemp_id(int temp_id) {
-        this.temp_id = temp_id;
+    public void setTemperatureId(int temperatureId) {
+        this.temperatureId = temperatureId;
     }
 
     public int getTemperature() {
@@ -53,18 +51,18 @@ public class Temperature implements Serializable {
 
 
     @ManyToOne
-    @JoinColumn(name = "temp_nr")
-    public Chart getChart() {
+    @JoinColumn(name = "TemperatureNr")
+    public SensorChart getSensorChart() {
         return chart;
     }
 
-    public void setChart(Chart chart) {
+    public void setSensorChart(SensorChart chart) {
         this.chart = chart;
     }
 
     @Override
     public String toString() {
-        return "Temperature{" +
+        return "TemperatureLog{" +
                 "temperature=" + temperature +
                 '}';
     }

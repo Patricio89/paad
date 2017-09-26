@@ -1,36 +1,48 @@
-USE sensordb;
 
-DROP TABLE IF EXISTS temperature;
-CREATE TABLE temperature
+
+DROP TABLE IF EXISTS SensorChart;
+CREATE TABLE SensorChart
 (
-temp_id INT NOT NULL AUTO_INCREMENT,
-temp_nr INT,
-temperature INT,
-PRIMARY KEY(temp_id),
-CONSTRAINT FOREIGN KEY (temp_nr) REFERENCES chart(chart_id) ON UPDATE CASCADE ON DELETE CASCADE
+  SensorId INT NOT NULL AUTO_INCREMENT,
+  Date_And_Time DATETIME,
+  PRIMARY KEY(SensorId)
 );
-CREATE INDEX IX_temperature_temp_nr ON temperature(temp_nr);
+CREATE INDEX IX_SensorChart_Date_And_Time ON SensorChart(Date_And_Time);
 
-DROP TABLE IF EXISTS humidity;
-CREATE TABLE humidity
+
+DROP TABLE IF EXISTS TemperatureLog;
+CREATE TABLE TemperatureLog
 (
-humi_id INT NOT NULL AUTO_INCREMENT,
-humi_nr INT,
-humidity INT,
-PRIMARY KEY(humi_id),
-CONSTRAINT FOREIGN KEY (humi_nr) REFERENCES chart(chart_id) ON UPDATE CASCADE ON DELETE CASCADE
+TemperatureId INT NOT NULL AUTO_INCREMENT,
+TemperatureNr INT,
+Temperature INT,
+PRIMARY KEY(TemperatureId),
+FOREIGN KEY (TemperatureNr) REFERENCES SensorChart(SensorId) ON UPDATE CASCADE ON DELETE CASCADE
 );
-CREATE INDEX IX_humidity_humi_nr ON humidity(humi_nr);
+CREATE INDEX IX_Temperature_Temperature ON TemperatureLog(TemperatureNr);
 
-DROP TABLE IF EXISTS chart;
-CREATE TABLE chart
+
+DROP TABLE IF EXISTS HumidityLog;
+CREATE TABLE HumidityLog
 (
-chart_id INT NOT NULL AUTO_INCREMENT,
-clockdate VARCHAR(30),
-PRIMARY KEY(chart_id)
+HumidityId INT NOT NULL AUTO_INCREMENT,
+HumidityNr INT,
+Humidity INT,
+PRIMARY KEY(HumidityId),
+FOREIGN KEY (HumidityNr) REFERENCES SensorChart(SensorId) ON UPDATE CASCADE ON DELETE CASCADE
 );
-CREATE INDEX IX_chart_dateAndTime ON chart(dateAndTime);
+CREATE INDEX IX_Humidity_Humidity ON HumidityLog(Humidity);
 
-SELECT * FROM chart;
-SELECT * FROM temperature;
+
+DROP TABLE IF EXISTS Account;
+CREATE TABLE Account
+(
+UserId INT NOT NULL AUTO_INCREMENT,
+FirstName VARCHAR(20),
+LastName VARCHAR(20),
+Email VARCHAR(50),
+UserPassword VARCHAR(50),
+Admin BOOLEAN,
+PRIMARY KEY(UserId)
+);
 

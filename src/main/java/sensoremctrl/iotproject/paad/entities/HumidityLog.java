@@ -1,45 +1,43 @@
 package sensoremctrl.iotproject.paad.entities;
 
-import com.opencsv.bean.CsvBindByName;
-
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "humidity")
-public class Humidity implements Serializable {
+@Table(name = "HumidityLog")
+public class HumidityLog implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int humi_id;
+    private int humidityId;
 
 
     private int humidity;
 
-    private Chart chart;
+    private SensorChart chart;
 
-    public Humidity() {
+    public HumidityLog() {
     }
 
-    public Humidity(Chart chart) {
+    public HumidityLog(SensorChart chart) {
         this.chart = chart;
     }
 
-    public Humidity(int humidity) {
+    public HumidityLog(int humidity) {
         this.humidity = humidity;
     }
 
-    public Humidity(int humidity, Chart chart) {
+    public HumidityLog(int humidity, SensorChart chart) {
         this.humidity = humidity;
         this.chart = chart;
     }
 
-    public int getHumi_id() {
-        return humi_id;
+    public int getHumidityId() {
+        return humidityId;
     }
 
-    public void setHumi_id(int humi_id) {
-        this.humi_id = humi_id;
+    public void setHumidityId(int humidityId) {
+        this.humidityId = humidityId;
     }
 
     public int getHumidity() {
@@ -51,18 +49,18 @@ public class Humidity implements Serializable {
     }
 
     @ManyToOne
-    @JoinColumn(name = "humi_nr")
-    public Chart getChart() {
+    @JoinColumn(name = "HumidityNr")
+    public SensorChart getSensorChart() {
         return chart;
     }
 
-    public void setChart(Chart chart) {
+    public void setSensorChart(SensorChart chart) {
         this.chart = chart;
     }
 
     @Override
     public String toString() {
-        return "Humidity{" +
+        return "HumidityLog{" +
                 "humidity=" + humidity +
                 '}';
     }
