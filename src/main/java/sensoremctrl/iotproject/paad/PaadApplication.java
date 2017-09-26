@@ -53,12 +53,16 @@ public class PaadApplication implements CommandLineRunner {
 		DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		for (int i = 0; i < csvDataList.size(); i++) {
 			temp = csvDataList.get(i).getTemperature();
-			humi = csvDataList.get(i).getHumidity();
 			temperature.setTemperature(temp);
+
+			humi = csvDataList.get(i).getHumidity();
 			humidity.setHumidity(humi);
+
+
 			dateAndTime = csvDataList.get(i).getDate_and_time();
 			dateTime = formatter.parse(dateAndTime);
 			dataChart.setDate_and_time(dateTime);
+
 			temperatureList.add(temperature);
 			humidityList.add(humidity);
 			System.out.println("Temp: " + temperature.getTemperature()
@@ -69,23 +73,20 @@ public class PaadApplication implements CommandLineRunner {
 
 
 
-		//SensorChart total = new SensorChart(temperatureList, humidityList, dateAndTime);
-		//repository.save(total);
 
+		List tempList = new ArrayList<TemperatureLog>(){{
+			add(new TemperatureLog(temperature.getTemperature(), dataChart));
+		}};
+		dataChart.setTemperatureLog(tempList);
 
-//		List tempList = new ArrayList<TemperatureLog>(){{
-//			add(new TemperatureLog(temperature.getTemperature(), dataChart));
-//		}};
-//		dataChart.setTemperatureLog(tempList);
-//
-//		List humiList = new ArrayList<HumidityLog>(){{
-//			add(new HumidityLog(humidity.getHumidity(), dataChart));
-//		}};
-//		dataChart.setHumidityLog(humiList);
-//
-//		repository.save(new ArrayList<SensorChart>(){{
-//			add(dataChart);
-//		}});
+		List humiList = new ArrayList<HumidityLog>(){{
+			add(new HumidityLog(humidity.getHumidity(), dataChart));
+		}};
+		dataChart.setHumidityLog(humiList);
+
+		repository.save(new ArrayList<SensorChart>(){{
+			add(dataChart);
+		}});
 
 //		SensorChart tempChart = new SensorChart();
 //		List<TemperatureLog> tempTest = new ArrayList<TemperatureLog>(){{
