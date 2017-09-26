@@ -4,10 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import sensoremctrl.iotproject.paad.entities.SensorChart;
-import sensoremctrl.iotproject.paad.entities.CsvData;
-import sensoremctrl.iotproject.paad.entities.HumidityLog;
-import sensoremctrl.iotproject.paad.entities.TemperatureLog;
+import sensoremctrl.iotproject.paad.DatabaseManagement.entities.SensorChart;
+import sensoremctrl.iotproject.paad.DatabaseManagement.entities.CsvData;
+import sensoremctrl.iotproject.paad.DatabaseManagement.entities.HumidityLog;
+import sensoremctrl.iotproject.paad.DatabaseManagement.entities.TemperatureLog;
 import sensoremctrl.iotproject.paad.FileManagement.DataLogger;
 import sensoremctrl.iotproject.paad.model.ChartRepository;
 

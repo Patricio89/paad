@@ -3,7 +3,7 @@ package sensoremctrl.iotproject.paad.FileManagement;
 import com.opencsv.bean.CsvToBeanBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
-import sensoremctrl.iotproject.paad.entities.CsvData;
+import sensoremctrl.iotproject.paad.DatabaseManagement.entities.CsvData;
 
 import java.io.*;
 import java.util.*;

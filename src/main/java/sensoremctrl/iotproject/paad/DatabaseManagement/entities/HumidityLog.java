@@ -1,4 +1,4 @@
-package sensoremctrl.iotproject.paad.entities;
+package sensoremctrl.iotproject.paad.DatabaseManagement.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
