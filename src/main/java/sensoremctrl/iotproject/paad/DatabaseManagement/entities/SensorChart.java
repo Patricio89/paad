@@ -12,30 +12,14 @@ public class SensorChart implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "SensorId")
     private int sensorId;
-
     private Date date_and_time;
-
-    @OneToMany(mappedBy = "chart", cascade = CascadeType.ALL)
-    private List<TemperatureLog> temperatures;
-
-    @OneToMany(mappedBy = "chart", cascade = CascadeType.ALL)
-    private List<HumidityLog> humidities;
-
 
     public SensorChart() {
     }
 
     public SensorChart(Date date_and_time) {
         this.date_and_time = date_and_time;
-    }
-
-    public SensorChart(List<TemperatureLog> temperatures, List<HumidityLog> humidities, Date date_and_time) {
-        this.temperatures = temperatures;
-        this.humidities = humidities;
-        this.date_and_time = date_and_time;
-
     }
 
     public int getSensorId() {
@@ -52,22 +36,6 @@ public class SensorChart implements Serializable {
 
     public void setDate_and_time(Date date_and_time) {
         this.date_and_time = date_and_time;
-    }
-
-    public List<TemperatureLog> getTemperatures() {
-        return temperatures;
-    }
-
-    public void setTemperatureLog(List<TemperatureLog> temperatures) {
-        this.temperatures = temperatures;
-    }
-
-    public List<HumidityLog> getHumidityLog() {
-        return humidities;
-    }
-
-    public void setHumidityLog(List<HumidityLog> humidities) {
-        this.humidities = humidities;
     }
 
     @Override

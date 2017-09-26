@@ -14,22 +14,18 @@ DROP TABLE IF EXISTS TemperatureLog;
 CREATE TABLE TemperatureLog
 (
 TemperatureId INT NOT NULL AUTO_INCREMENT,
-TemperatureNr INT,
 Temperature INT,
-PRIMARY KEY(TemperatureId),
-FOREIGN KEY (TemperatureNr) REFERENCES SensorChart(SensorId) ON UPDATE CASCADE ON DELETE CASCADE
+PRIMARY KEY(TemperatureId)
 );
-CREATE INDEX IX_Temperature_Temperature ON TemperatureLog(TemperatureNr);
+CREATE INDEX IX_Temperature_Temperature ON TemperatureLog(Temperature);
 
 
 DROP TABLE IF EXISTS HumidityLog;
 CREATE TABLE HumidityLog
 (
 HumidityId INT NOT NULL AUTO_INCREMENT,
-HumidityNr INT,
 Humidity INT,
-PRIMARY KEY(HumidityId),
-FOREIGN KEY (HumidityNr) REFERENCES SensorChart(SensorId) ON UPDATE CASCADE ON DELETE CASCADE
+PRIMARY KEY(HumidityId)
 );
 CREATE INDEX IX_Humidity_Humidity ON HumidityLog(Humidity);
 
@@ -45,4 +41,5 @@ UserPassword VARCHAR(50),
 Admin BOOLEAN,
 PRIMARY KEY(UserId)
 );
+
 

@@ -1,14 +1,25 @@
 package sensoremctrl.iotproject.paad.DataManagement;
 
-import java.util.Date;
+import com.opencsv.bean.CsvBindByName;
+
 
 public class DataValue {
+
+    @CsvBindByName
     private int temperature;
+
+    @CsvBindByName
     private int humidity;
-    private Date timeStamp;
+
+    @CsvBindByName
+    private String timeStamp;
+
+    public DataValue() {
+
+    }
 
 
-    public DataValue(int temperature, int humidity, Date timeStamp) {
+    public DataValue(int temperature, int humidity, String timeStamp) {
         this.temperature = temperature;
         this.humidity = humidity;
         this.timeStamp = timeStamp;
@@ -24,7 +35,7 @@ public class DataValue {
     }
 
 
-    public Date getTimeStamp() {
+    public String getTimeStamp() {
         return timeStamp;
     }
 

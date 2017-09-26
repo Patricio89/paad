@@ -4,12 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import sensoremctrl.iotproject.paad.DataManagement.DataValue;
 import sensoremctrl.iotproject.paad.DatabaseManagement.entities.SensorChart;
-import sensoremctrl.iotproject.paad.DatabaseManagement.entities.CsvData;
 import sensoremctrl.iotproject.paad.DatabaseManagement.entities.HumidityLog;
 import sensoremctrl.iotproject.paad.DatabaseManagement.entities.TemperatureLog;
 import sensoremctrl.iotproject.paad.FileManagement.DataLogger;
 import sensoremctrl.iotproject.paad.model.ChartRepository;
+import sensoremctrl.iotproject.paad.model.HumidityRepository;
 import sensoremctrl.iotproject.paad.model.TemperatureRepository;
 
 import javax.transaction.Transactional;
@@ -29,8 +30,10 @@ public class PaadApplication implements CommandLineRunner {
 	ChartRepository repository;
 
 	@Autowired
-	TemperatureRepository tempRepo;
+	TemperatureRepository temperatureRepository;
 
+	@Autowired
+	HumidityRepository humidityRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(PaadApplication.class);
@@ -42,7 +45,7 @@ public class PaadApplication implements CommandLineRunner {
 	public void run(String... strings) throws Exception {
 
 
-		List<CsvData> csvDataList = dataLogger.readCsv();
+		List<DataValue> csvDataList = dataLogger.readCsv();
 
 		TemperatureLog temperature = new TemperatureLog();
 		HumidityLog humidity = new HumidityLog();
@@ -50,7 +53,6 @@ public class PaadApplication implements CommandLineRunner {
 		List<TemperatureLog> temperatureList = new ArrayList<>();
 		List<HumidityLog> humidityList = new ArrayList<>();
 		List<SensorChart> sensorChartList = new ArrayList<>();
-
 		int temp;
 		int humi;
 		String dateAndTime;
@@ -59,45 +61,27 @@ public class PaadApplication implements CommandLineRunner {
 		for (int i = 0; i < csvDataList.size(); i++) {
 			temp = csvDataList.get(i).getTemperature();
 			temperature.setTemperature(temp);
+			temperatureList.add(temperature);
+			temperatureList.add(new TemperatureLog(temperature.getTemperature()));
 
 			humi = csvDataList.get(i).getHumidity();
 			humidity.setHumidity(humi);
+			humidityList.add(humidity);
+			humidityList.add(new HumidityLog(humidity.getHumidity()));
 
-
-			dateAndTime = csvDataList.get(i).getDate_and_time();
+			dateAndTime = csvDataList.get(i).getTimeStamp();
 			dateTime = formatter.parse(dateAndTime);
 			dataChart.setDate_and_time(dateTime);
+			sensorChartList.add(new SensorChart(dataChart.getDate_and_time()));
 
-			temperatureList.add(temperature);
-			humidityList.add(humidity);
-			sensorChartList.add(dataChart);
 			System.out.println("Temp: " + temperature.getTemperature()
 					+ " Fukt: " + humidity.getHumidity()
 					+ " Tid: " + dataChart.getDate_and_time());
 
-
 		}
 
-		System.out.println(dataChart);
-		repository.save(sensorChartList);
-		//System.out.println(temperature);
-
-
-		//tempRepo.save(temperature);
-
-
-//		List tempList = new ArrayList<TemperatureLog>(){{
-//			add(new TemperatureLog(temperature.getTemperature(), dataChart));
-//		}};
-//		dataChart.setTemperatureLog(tempList);
-//
-//		List humiList = new ArrayList<HumidityLog>(){{
-//			add(new HumidityLog(humidity.getHumidity(), dataChart));
-//		}};
-//		dataChart.setHumidityLog(humiList);
-//
-//		repository.save(new ArrayList<SensorChart>(){{
-//			add(dataChart);
-//		}});
+		//repository.save(sensorChartList);
+		//temperatureRepository.save(temperatureList);
+		//humidityRepository.save(humidityList);
 	}
 }
