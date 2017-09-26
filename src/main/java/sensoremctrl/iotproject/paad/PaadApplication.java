@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.jpa.repository.JpaRepository;
 import sensoremctrl.iotproject.paad.entities.Chart;
 import sensoremctrl.iotproject.paad.entities.CsvData;
 import sensoremctrl.iotproject.paad.entities.Humidity;
@@ -19,8 +20,8 @@ public class PaadApplication implements CommandLineRunner {
 	@Autowired
 	DataLogger dataLogger;
 
-//	@Autowired
-//	ChartRepository repository;
+	@Autowired
+	JpaRepository repository;
 
 
 	public static void main(String[] args) {
@@ -58,8 +59,9 @@ public class PaadApplication implements CommandLineRunner {
 					+ " Tid: " + dataChart.getclockdate());
 		}
 //
-//		Chart total = new Chart(temperatureList, humidityList, dateAndTime);
+		Chart total = new Chart(temperatureList, humidityList, dateAndTime);
 
+		repository.save(total);
 
 
 //		Chart tempChart = new Chart();
