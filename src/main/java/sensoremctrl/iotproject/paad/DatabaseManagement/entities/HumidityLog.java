@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "HumidityLog")
+@Table(name = "humiditylog")
 public class HumidityLog implements Serializable {
 
     @Id
@@ -14,6 +14,8 @@ public class HumidityLog implements Serializable {
 
     private int humidity;
 
+    @ManyToOne
+    @JoinColumn(name = "HumidityNr")
     private SensorChart chart;
 
     public HumidityLog() {
@@ -48,8 +50,6 @@ public class HumidityLog implements Serializable {
         this.humidity = humidity;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "HumidityNr")
     public SensorChart getSensorChart() {
         return chart;
     }

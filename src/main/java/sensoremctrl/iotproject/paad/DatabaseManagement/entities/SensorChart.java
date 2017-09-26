@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "SensorChart")
+@Table(name = "sensorchart")
 public class SensorChart implements Serializable {
 
     @Id
@@ -15,7 +15,6 @@ public class SensorChart implements Serializable {
     @Column(name = "SensorId")
     private int sensorId;
 
-    @Temporal(TemporalType.TIMESTAMP)
     private Date date_and_time;
 
     @OneToMany(mappedBy = "chart", cascade = CascadeType.ALL)
@@ -74,7 +73,7 @@ public class SensorChart implements Serializable {
     @Override
     public String toString() {
         return "SensorChart{" +
-                "clockdate='" + date_and_time + '\'' +
+                "Date_And_Time='" + date_and_time + '\'' +
                 '}';
     }
 }

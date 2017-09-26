@@ -10,6 +10,7 @@ import sensoremctrl.iotproject.paad.DatabaseManagement.entities.HumidityLog;
 import sensoremctrl.iotproject.paad.DatabaseManagement.entities.TemperatureLog;
 import sensoremctrl.iotproject.paad.FileManagement.DataLogger;
 import sensoremctrl.iotproject.paad.model.ChartRepository;
+import sensoremctrl.iotproject.paad.model.TemperatureRepository;
 
 import javax.transaction.Transactional;
 import java.text.DateFormat;
@@ -26,6 +27,9 @@ public class PaadApplication implements CommandLineRunner {
 
 	@Autowired
 	ChartRepository repository;
+
+	@Autowired
+	TemperatureRepository tempRepo;
 
 
 	public static void main(String[] args) {
@@ -45,6 +49,7 @@ public class PaadApplication implements CommandLineRunner {
 		SensorChart dataChart = new SensorChart();
 		List<TemperatureLog> temperatureList = new ArrayList<>();
 		List<HumidityLog> humidityList = new ArrayList<>();
+		List<SensorChart> sensorChartList = new ArrayList<>();
 
 		int temp;
 		int humi;
@@ -65,46 +70,34 @@ public class PaadApplication implements CommandLineRunner {
 
 			temperatureList.add(temperature);
 			humidityList.add(humidity);
+			sensorChartList.add(dataChart);
 			System.out.println("Temp: " + temperature.getTemperature()
 					+ " Fukt: " + humidity.getHumidity()
 					+ " Tid: " + dataChart.getDate_and_time());
+
+
 		}
 
+		System.out.println(dataChart);
+		repository.save(sensorChartList);
+		//System.out.println(temperature);
 
 
+		//tempRepo.save(temperature);
 
 
-		List tempList = new ArrayList<TemperatureLog>(){{
-			add(new TemperatureLog(temperature.getTemperature(), dataChart));
-		}};
-		dataChart.setTemperatureLog(tempList);
-
-		List humiList = new ArrayList<HumidityLog>(){{
-			add(new HumidityLog(humidity.getHumidity(), dataChart));
-		}};
-		dataChart.setHumidityLog(humiList);
-
-		repository.save(new ArrayList<SensorChart>(){{
-			add(dataChart);
-		}});
-
-//		SensorChart tempChart = new SensorChart();
-//		List<TemperatureLog> tempTest = new ArrayList<TemperatureLog>(){{
+//		List tempList = new ArrayList<TemperatureLog>(){{
 //			add(new TemperatureLog(temperature.getTemperature(), dataChart));
 //		}};
-//		dataChart.setTemperatures(tempTest);
+//		dataChart.setTemperatureLog(tempList);
 //
-//
-//		SensorChart humiChart = new SensorChart();
-//		List<HumidityLog> humiTest = new ArrayList<HumidityLog>(){{
+//		List humiList = new ArrayList<HumidityLog>(){{
 //			add(new HumidityLog(humidity.getHumidity(), dataChart));
 //		}};
-//		dataChart.setHumidities(humiTest);
-//
+//		dataChart.setHumidityLog(humiList);
 //
 //		repository.save(new ArrayList<SensorChart>(){{
 //			add(dataChart);
-//
 //		}});
 	}
 }
