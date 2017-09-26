@@ -1,4 +1,4 @@
-package sensoremctrl.iotproject.paad.entities;
+package sensoremctrl.iotproject.paad.DatabaseManagement.entities;
 
 import com.opencsv.bean.CsvBindByName;
 import net.sf.jsefa.csv.annotation.CsvDataType;
