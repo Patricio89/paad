@@ -71,16 +71,16 @@ public class PaadApplication implements CommandLineRunner {
 
 			dateAndTime = csvDataList.get(i).getDateAndTime();
 			dateTime = formatter.parse(dateAndTime);
-			dataChart.setTimeLog(dateTime);
-			dateAndTimeLogList.add(new DateAndTimeLog(dataChart.getTimeLog()));
+			dataChart.setTimeStamp(dateTime);
+			dateAndTimeLogList.add(new DateAndTimeLog(dataChart.getTimeStamp()));
 
 			System.out.println("Temp: " + temperature.getTemperature()
 					+ " Fukt: " + humidity.getHumidity()
-					+ " Tid: " + dataChart.getTimeLog());
+					+ " Tid: " + dataChart.getTimeStamp());
 
 		}
 
-		dateAndTimeRepository.save(dateAndTimeLogList);
+		//dateAndTimeRepository.save(dateAndTimeLogList);
 		//temperatureRepository.save(temperatureList);
 		//humidityRepository.save(humidityList);
 	}
