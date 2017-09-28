@@ -41,12 +41,13 @@ public class DataTransfer implements Serializable{
         }
     }
 
-
+    //Probably error due to double parsing. --check LocalDataStorage--
     private void storeDateAndTime(){
         Date stringToDate = processor.convertStringToDate(dataStorages);
         for (int i = 0; i < dateAndTimeLogList.size(); i++){
 
             dateAndTimeLogList.add(new DateAndTimeLog(stringToDate));
+
         }
     }
 
@@ -56,13 +57,13 @@ public class DataTransfer implements Serializable{
         return this.temperatureLogList;
     }
 
-    public List<HumidityLog> getHumidityLogList(){
+    public List<HumidityLog> getHumidityList(){
         storeHumidity();
         return this.humidityLogList;
     }
 
 
-    public List<DateAndTimeLog> getDateAndTimeLogList(){
+    public List<DateAndTimeLog> getDateAndTimeList(){
         storeDateAndTime();
         return this.dateAndTimeLogList;
     }

@@ -14,9 +14,12 @@ public class DataValue {
     @CsvBindByName
     private String timeStamp;
 
+    /* --Remove if no error occurs during storage to DB--
+
     public DataValue() {
 
     }
+    */
 
 
     public DataValue(int temperature, int humidity, String timeStamp) {
