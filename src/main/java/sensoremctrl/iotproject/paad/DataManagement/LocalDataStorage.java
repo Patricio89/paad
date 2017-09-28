@@ -14,23 +14,27 @@ public class LocalDataStorage {
     @Autowired
     DataLogger dataLogger;
 
-//    @Autowired
-//    DataProcessor processor;
+    @Autowired
+    DataProcessor processor;
 
     private List<DataValue> dataSamples = new ArrayList<>();
 
     /**
      * Stores data from .CSV file to local ArrayList.
      */
+
     public List<DataValue> storeDataToList(){
 
         return dataLogger.readCsv();
     }
 
-//    @Bean
-//    public List<DataValue> getDataValueList(){
-//        List<DataValue> dataSampleList= storeDataToList();
-//        processor.convertStringToDate(dataSampleList);
-//        return this.dataSamples;
-//    }
+    @Bean
+    public List<DataValue> getDataValueList(){
+        List<DataValue> dataSampleList= storeDataToList();
+        processor.convertStringToDate(dataSampleList);
+        return this.dataSamples;
+    }
+
+
+
 }

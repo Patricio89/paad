@@ -1,8 +1,6 @@
-package sensoremctrl.iotproject.paad.DatabaseManagement;
+package sensoremctrl.iotproject.paad.DatabaseManagement.Communication;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.stereotype.Component;
 import sensoremctrl.iotproject.paad.DataManagement.DataProcessor;
 import sensoremctrl.iotproject.paad.DataManagement.DataValue;
 import sensoremctrl.iotproject.paad.DataManagement.LocalDataStorage;
@@ -10,13 +8,11 @@ import sensoremctrl.iotproject.paad.DatabaseManagement.Entities.DateAndTimeLog;
 import sensoremctrl.iotproject.paad.DatabaseManagement.Entities.HumidityLog;
 import sensoremctrl.iotproject.paad.DatabaseManagement.Entities.TemperatureLog;
 
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-@Component
 public class DataTransfer implements Serializable{
 
     @Autowired
@@ -25,19 +21,18 @@ public class DataTransfer implements Serializable{
     @Autowired
     DataProcessor processor;
 
-    private List<DataValue> dataStorages = dataStorage.storeDataToList();
+    private List<DataValue> dataStorages = dataStorage.getDataValueList();
 
 
     private List<TemperatureLog> temperatureLogList = new ArrayList<>();
     private List<HumidityLog> humidityLogList = new ArrayList<>();
     private List<DateAndTimeLog> dateAndTimeLogList = new ArrayList<>();
 
-    @Bean
-    private List<TemperatureLog> storeTemperature(){
+
+    private void storeTemperature(){
         for (int i = 0; i < temperatureLogList.size(); i++){
             temperatureLogList.add(new TemperatureLog(dataStorages.get(i).getTemperature()));
         }
-        return temperatureLogList;
     }
 
     private void storeHumidity(){
@@ -58,8 +53,8 @@ public class DataTransfer implements Serializable{
 
 
     public List<TemperatureLog> getTemperatureList(){
-        //storeTemperature();
-        return storeTemperature();
+        storeTemperature();
+        return this.temperatureLogList;
     }
 
     public List<HumidityLog> getHumidityList(){

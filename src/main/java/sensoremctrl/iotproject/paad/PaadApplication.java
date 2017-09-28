@@ -1,24 +1,7 @@
 package sensoremctrl.iotproject.paad;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import sensoremctrl.iotproject.paad.DataManagement.DataValue;
-import sensoremctrl.iotproject.paad.DatabaseManagement.entities.DateAndTimeLog;
-import sensoremctrl.iotproject.paad.DatabaseManagement.entities.HumidityLog;
-import sensoremctrl.iotproject.paad.DatabaseManagement.entities.TemperatureLog;
-import sensoremctrl.iotproject.paad.FileManagement.DataLogger;
-import sensoremctrl.iotproject.paad.model.DateAndTimeRepository;
-import sensoremctrl.iotproject.paad.model.HumidityRepository;
-import sensoremctrl.iotproject.paad.model.TemperatureRepository;
-
-import javax.transaction.Transactional;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 @SpringBootApplication
 public class PaadApplication {
