@@ -4,10 +4,10 @@ DROP TABLE IF EXISTS DateAndTimeLog;
 CREATE TABLE DateAndTimeLog
 (
   TimeStampId INT NOT NULL AUTO_INCREMENT,
-  TimeLog DATETIME,
+  TimeStamp DATETIME,
   PRIMARY KEY(TimeStampId)
 );
-CREATE INDEX IX_DateAndTimeLog_TimeLog ON DateAndTimeLog(TimeLog);
+CREATE INDEX IX_TimeStamp_TimeStamp ON DateAndTimeLog(TimeStamp);
 
 
 DROP TABLE IF EXISTS TemperatureLog;

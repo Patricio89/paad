@@ -14,7 +14,7 @@
 //    public Date convertStringToDate(List<DataValue> unProcessedList) {
 //
 //        for (int i = 0; i < unProcessedList.size(); i++) {
-//            dateAndTime = unProcessedList.get(i).getTimeStamp();
+//            dateAndTime = unProcessedList.get(i).getDateAndTime();
 //            try {
 //                dateTime = formatter.parse(dateAndTime);
 //            } catch (ParseException e) {
