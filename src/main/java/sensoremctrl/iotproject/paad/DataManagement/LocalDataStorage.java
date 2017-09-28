@@ -5,7 +5,6 @@ import org.springframework.context.annotation.Bean;
 import sensoremctrl.iotproject.paad.FileManagement.DataLogger;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class LocalDataStorage {
@@ -28,7 +27,7 @@ public class LocalDataStorage {
     @Bean
     public List<DataValue> getDataValueList(){
         storeDataToList();
-        processor.stringToDate(dataSamples);
+        processor.convertStringToDate(dataSamples);
         return this.dataSamples;
     }
 }

@@ -1,7 +1,5 @@
 package sensoremctrl.iotproject.paad.DataManagement;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -13,7 +11,7 @@ public class DataProcessor {
     private Date dateTime;
     private DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
-    public Date stringToDate(List<DataValue> unProcessedList) {
+    public Date convertStringToDate(List<DataValue> unProcessedList) {
 
         for (int i = 0; i < unProcessedList.size(); i++) {
             dateAndTime = unProcessedList.get(i).getTimeStamp();

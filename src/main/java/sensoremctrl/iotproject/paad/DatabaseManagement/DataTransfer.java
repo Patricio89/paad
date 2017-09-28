@@ -43,7 +43,7 @@ public class DataTransfer implements Serializable{
 
 
     private void storeDateAndTime(){
-        Date stringToDate = processor.stringToDate(dataStorages);
+        Date stringToDate = processor.convertStringToDate(dataStorages);
         for (int i = 0; i < dateAndTimeLogList.size(); i++){
 
             dateAndTimeLogList.add(new DateAndTimeLog(stringToDate));
