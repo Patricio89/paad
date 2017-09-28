@@ -5,11 +5,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import sensoremctrl.iotproject.paad.DataManagement.DataValue;
-import sensoremctrl.iotproject.paad.DatabaseManagement.entities.SensorChart;
+import sensoremctrl.iotproject.paad.DatabaseManagement.entities.DateAndTimeLog;
 import sensoremctrl.iotproject.paad.DatabaseManagement.entities.HumidityLog;
 import sensoremctrl.iotproject.paad.DatabaseManagement.entities.TemperatureLog;
 import sensoremctrl.iotproject.paad.FileManagement.DataLogger;
-import sensoremctrl.iotproject.paad.model.ChartRepository;
+import sensoremctrl.iotproject.paad.model.DateAndTimeRepository;
 import sensoremctrl.iotproject.paad.model.HumidityRepository;
 import sensoremctrl.iotproject.paad.model.TemperatureRepository;
 
@@ -27,7 +27,7 @@ public class PaadApplication implements CommandLineRunner {
 	DataLogger dataLogger;
 
 	@Autowired
-	ChartRepository repository;
+	DateAndTimeRepository repository;
 
 	@Autowired
 	TemperatureRepository temperatureRepository;
@@ -49,10 +49,10 @@ public class PaadApplication implements CommandLineRunner {
 
 		TemperatureLog temperature = new TemperatureLog();
 		HumidityLog humidity = new HumidityLog();
-		SensorChart dataChart = new SensorChart();
+		DateAndTimeLog dataChart = new DateAndTimeLog();
 		List<TemperatureLog> temperatureList = new ArrayList<>();
 		List<HumidityLog> humidityList = new ArrayList<>();
-		List<SensorChart> sensorChartList = new ArrayList<>();
+		List<DateAndTimeLog> dateAndTimeLogList = new ArrayList<>();
 		int temp;
 		int humi;
 		String dateAndTime;
@@ -72,7 +72,7 @@ public class PaadApplication implements CommandLineRunner {
 			dateAndTime = csvDataList.get(i).getTimeStamp();
 			dateTime = formatter.parse(dateAndTime);
 			dataChart.setDate_and_time(dateTime);
-			sensorChartList.add(new SensorChart(dataChart.getDate_and_time()));
+			dateAndTimeLogList.add(new DateAndTimeLog(dataChart.getDate_and_time()));
 
 			System.out.println("Temp: " + temperature.getTemperature()
 					+ " Fukt: " + humidity.getHumidity()
@@ -80,7 +80,7 @@ public class PaadApplication implements CommandLineRunner {
 
 		}
 
-		//repository.save(sensorChartList);
+		//repository.save(dateAndTimeLogList);
 		//temperatureRepository.save(temperatureList);
 		//humidityRepository.save(humidityList);
 	}

@@ -6,19 +6,24 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+
+// Refaktoriserat till DateAndTimeLog om det inte fungerar, ändra tillbaks till SensorChart
+
 @Entity
 @Table(name = "sensorchart")
-public class SensorChart implements Serializable {
+public class DateAndTimeLog implements Serializable {
+
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int sensorId;
     private Date date_and_time;
 
-    public SensorChart() {
+    public DateAndTimeLog() {
     }
 
-    public SensorChart(Date date_and_time) {
+    public DateAndTimeLog(Date date_and_time) {
         this.date_and_time = date_and_time;
     }
 
@@ -38,9 +43,11 @@ public class SensorChart implements Serializable {
         this.date_and_time = date_and_time;
     }
 
+
+
     @Override
     public String toString() {
-        return "SensorChart{" +
+        return "DateAndTimeLog{" +
                 "Date_And_Time='" + date_and_time + '\'' +
                 '}';
     }
