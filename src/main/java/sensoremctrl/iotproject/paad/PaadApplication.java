@@ -5,13 +5,13 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import sensoremctrl.iotproject.paad.DataManagement.DataValue;
-import sensoremctrl.iotproject.paad.DatabaseManagement.entities.DateAndTimeLog;
-import sensoremctrl.iotproject.paad.DatabaseManagement.entities.HumidityLog;
-import sensoremctrl.iotproject.paad.DatabaseManagement.entities.TemperatureLog;
+import sensoremctrl.iotproject.paad.DatabaseManagement.Entities.DateAndTimeLog;
+import sensoremctrl.iotproject.paad.DatabaseManagement.Entities.HumidityLog;
+import sensoremctrl.iotproject.paad.DatabaseManagement.Entities.TemperatureLog;
 import sensoremctrl.iotproject.paad.FileManagement.DataLogger;
-import sensoremctrl.iotproject.paad.model.DateAndTimeRepository;
-import sensoremctrl.iotproject.paad.model.HumidityRepository;
-import sensoremctrl.iotproject.paad.model.TemperatureRepository;
+import sensoremctrl.iotproject.paad.Model.DateAndTimeRepository;
+import sensoremctrl.iotproject.paad.Model.HumidityRepository;
+import sensoremctrl.iotproject.paad.Model.TemperatureRepository;
 
 import javax.transaction.Transactional;
 import java.text.DateFormat;
@@ -39,7 +39,7 @@ public class PaadApplication implements CommandLineRunner {
 		SpringApplication.run(PaadApplication.class);
 
 	}
-
+	//test
 	@Override
 	@Transactional
 	public void run(String... strings) throws Exception {

@@ -1,4 +1,5 @@
-
+DROP DATABASE IF EXISTS sensordb;
+CREATE DATABASE sensordb;
 
 DROP TABLE IF EXISTS DateAndTimeLog;
 CREATE TABLE DateAndTimeLog
@@ -7,7 +8,7 @@ CREATE TABLE DateAndTimeLog
   TimeStamp DATETIME,
   PRIMARY KEY(TimeStampId)
 );
-CREATE INDEX IX_TimeStamp_TimeStamp ON DateAndTimeLog(TimeStamp);
+CREATE INDEX IX_DateAndTimeLog_TimeLog ON DateAndTimeLog(TimeStamp);
 
 
 DROP TABLE IF EXISTS TemperatureLog;
