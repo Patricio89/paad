@@ -12,17 +12,16 @@ public class DataValue {
     private int humidity;
 
     @CsvBindByName
-    private String timeStamp;
+    private String dateAndTime;
 
     public DataValue() {
 
     }
 
-
-    public DataValue(int temperature, int humidity, String timeStamp) {
+    public DataValue(int temperature, int humidity, String dateAndTime) {
         this.temperature = temperature;
         this.humidity = humidity;
-        this.timeStamp = timeStamp;
+        this.dateAndTime = dateAndTime;
     }
 
     public int getTemperature() {
@@ -35,8 +34,8 @@ public class DataValue {
     }
 
 
-    public String getTimeStamp() {
-        return timeStamp;
+    public String getDateAndTime() {
+        return dateAndTime;
     }
 
 

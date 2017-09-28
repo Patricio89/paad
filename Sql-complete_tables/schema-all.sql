@@ -1,13 +1,13 @@
 
 
-DROP TABLE IF EXISTS SensorChart;
-CREATE TABLE SensorChart
+DROP TABLE IF EXISTS DateAndTimeLog;
+CREATE TABLE DateAndTimeLog
 (
-  SensorId INT NOT NULL AUTO_INCREMENT,
-  Date_And_Time DATETIME,
-  PRIMARY KEY(SensorId)
+  TimeStampId INT NOT NULL AUTO_INCREMENT,
+  TimeLog DATETIME,
+  PRIMARY KEY(TimeStampId)
 );
-CREATE INDEX IX_SensorChart_Date_And_Time ON SensorChart(Date_And_Time);
+CREATE INDEX IX_DateAndTimeLog_TimeLog ON DateAndTimeLog(TimeLog);
 
 
 DROP TABLE IF EXISTS TemperatureLog;
@@ -41,5 +41,3 @@ UserPassword VARCHAR(50),
 Admin BOOLEAN,
 PRIMARY KEY(UserId)
 );
-
-

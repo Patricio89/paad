@@ -21,7 +21,7 @@
 //    }
 //
 //    @Override
-//    public Date getTimeStamp() {
-//        return dataValue.getTimeStamp();
+//    public Date getDateAndTime() {
+//        return dataValue.getDateAndTime();
 //    }
 //}
