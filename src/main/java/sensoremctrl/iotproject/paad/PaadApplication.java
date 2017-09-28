@@ -80,8 +80,8 @@ public class PaadApplication implements CommandLineRunner {
 
 		}
 
-		//dateAndTimeRepository.save(dateAndTimeLogList);
-		//temperatureRepository.save(temperatureList);
-		//humidityRepository.save(humidityList);
+		dateAndTimeRepository.save(dateAndTimeLogList);
+		temperatureRepository.save(temperatureList);
+		humidityRepository.save(humidityList);
 	}
 }
