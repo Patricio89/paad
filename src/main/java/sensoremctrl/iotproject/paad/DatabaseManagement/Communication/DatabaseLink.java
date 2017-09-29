@@ -22,6 +22,7 @@ public class DatabaseLink {
     @Autowired
     DataTransfer dataTransfer;
 
+    // Make if statement to controller if method returns null etc.
     @Bean
     public boolean sendDataToDatabase() {
         temperatureRepository.save(dataTransfer.storeTemperatureLog());

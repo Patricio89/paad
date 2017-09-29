@@ -9,7 +9,6 @@ import java.util.Date;
 @Component
 public class DataProcessor {
 
-
     public Date convertStringToDate(String unFormattedString) {
         Date tempDate = null;
         DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

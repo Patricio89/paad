@@ -10,7 +10,6 @@ import java.util.*;
 @Component
 public class DataLogger {
 
-
     public List<DataValue> readCsv() {
         final String sensorFile = "src/main/resources/sensor_data.csv";
         List<DataValue> csvData = null;
@@ -19,6 +18,7 @@ public class DataLogger {
                     .withType(DataValue.class)
                     .build()
                     .parse();
+
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();

@@ -8,9 +8,7 @@ public class PaadApplication {
 
 
 	public static void main(String[] args)  {
-		SpringApplication.run(PaadApplication.class) ;
+		SpringApplication.run(PaadApplication.class);
 
 	}
-
-
 }
