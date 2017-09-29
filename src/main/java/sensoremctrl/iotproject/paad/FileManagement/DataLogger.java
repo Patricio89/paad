@@ -1,7 +1,6 @@
 package sensoremctrl.iotproject.paad.FileManagement;
 
 import com.opencsv.bean.CsvToBeanBuilder;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 import sensoremctrl.iotproject.paad.DataManagement.DataValue;
 
@@ -11,7 +10,7 @@ import java.util.*;
 @Component
 public class DataLogger {
 
-    @Bean
+
     public List<DataValue> readCsv() {
         final String sensorFile = "src/main/resources/sensor_data.csv";
         List<DataValue> csvData = null;

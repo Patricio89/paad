@@ -11,9 +11,6 @@ import sensoremctrl.iotproject.paad.Model.TemperatureRepository;
 public class DatabaseLink {
 
     @Autowired
-    DataTransfer transmitter;
-
-    @Autowired
     TemperatureRepository temperatureRepository;
 
     @Autowired
@@ -22,15 +19,15 @@ public class DatabaseLink {
     @Autowired
     DateAndTimeRepository dateAndTimeRepository;
 
+    @Autowired
+    DataTransfer dataTransfer;
+
     @Bean
-    public void sendDataToDatabase(){
-        temperatureRepository.save(transmitter.getTemperatureList());
-        humidityRepository.save(transmitter.getHumidityList());
-        dateAndTimeRepository.save(transmitter.getDateAndTimeList());
+    public boolean sendDataToDatabase() {
+        temperatureRepository.save(dataTransfer.storeTemperatureLog());
+        humidityRepository.save(dataTransfer.storeHumidityLog());
+        dateAndTimeRepository.save(dataTransfer.storeTimeStamp());
+        return true;
     }
 
-
-    public void getDataFromDatabase(){
-
-    }
 }

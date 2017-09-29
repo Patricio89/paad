@@ -9,68 +9,62 @@ import sensoremctrl.iotproject.paad.DataManagement.LocalDataStorage;
 import sensoremctrl.iotproject.paad.DatabaseManagement.Entities.DateAndTimeLog;
 import sensoremctrl.iotproject.paad.DatabaseManagement.Entities.HumidityLog;
 import sensoremctrl.iotproject.paad.DatabaseManagement.Entities.TemperatureLog;
-
-
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Component
-public class DataTransfer implements Serializable{
+public class DataTransfer {
 
     @Autowired
-    LocalDataStorage dataStorage;
+    LocalDataStorage localDataStorage;
 
     @Autowired
     DataProcessor processor;
 
-    private List<DataValue> dataStorages = dataStorage.storeDataToList();
-
-
-    private List<TemperatureLog> temperatureLogList = new ArrayList<>();
-    private List<HumidityLog> humidityLogList = new ArrayList<>();
-    private List<DateAndTimeLog> dateAndTimeLogList = new ArrayList<>();
+    private List<DataValue> csvDataValues;
 
     @Bean
-    private List<TemperatureLog> storeTemperature(){
-        for (int i = 0; i < temperatureLogList.size(); i++){
-            temperatureLogList.add(new TemperatureLog(dataStorages.get(i).getTemperature()));
+    public List<TemperatureLog> storeTemperatureLog() {
+        csvDataValues = localDataStorage.getDataValueList();
+        List<TemperatureLog> temperatureLogList = new ArrayList<>();
+        TemperatureLog temperatureLog = new TemperatureLog();
+        int temperature;
+        for (int i = 0; i < csvDataValues.size(); i++) {
+            temperature = csvDataValues.get(i).getTemperature();
+            temperatureLog.setTemperature(temperature);
+            temperatureLogList.add(new TemperatureLog(temperatureLog.getTemperature()));
         }
         return temperatureLogList;
     }
 
-    private void storeHumidity(){
-        for (int i = 0; i < humidityLogList.size(); i++){
-            humidityLogList.add(new HumidityLog(dataStorages.get(i).getHumidity()));
+    @Bean
+    public List<HumidityLog> storeHumidityLog() {
+        csvDataValues = localDataStorage.getDataValueList();
+        List<HumidityLog> humidityLogList = new ArrayList<>();
+        HumidityLog humidityLog = new HumidityLog();
+        int humidity;
+        for (int i = 0; i < csvDataValues.size(); i++) {
+            humidity = csvDataValues.get(i).getHumidity();
+            humidityLog.setHumidity(humidity);
+            humidityLogList.add(new HumidityLog(humidityLog.getHumidity()));
         }
+        return humidityLogList;
     }
 
-    //Probably error due to double parsing. --check LocalDataStorage--
-    private void storeDateAndTime(){
-        Date stringToDate = processor.convertStringToDate(dataStorages);
-        for (int i = 0; i < dateAndTimeLogList.size(); i++){
-
-            dateAndTimeLogList.add(new DateAndTimeLog(stringToDate));
-
+    @Bean
+    public List<DateAndTimeLog> storeTimeStamp() {
+        csvDataValues = localDataStorage.getDataValueList();
+        List<DateAndTimeLog> dateAndTimeLogList = new ArrayList<>();
+        DateAndTimeLog dateAndTimeLog = new DateAndTimeLog();
+        Date timeStamp;
+        for (int i = 0; i < csvDataValues.size(); i++) {
+            timeStamp = processor.convertStringToDate(csvDataValues.get(i).getDateAndTime());
+            dateAndTimeLog.setTimeStamp(timeStamp);
+            dateAndTimeLogList.add(new DateAndTimeLog(dateAndTimeLog.getTimeStamp()));
         }
+        return dateAndTimeLogList;
     }
 
-
-    public List<TemperatureLog> getTemperatureList(){
-        //storeTemperature();
-        return storeTemperature();
-    }
-
-    public List<HumidityLog> getHumidityList(){
-        storeHumidity();
-        return this.humidityLogList;
-    }
-
-
-    public List<DateAndTimeLog> getDateAndTimeList(){
-        storeDateAndTime();
-        return this.dateAndTimeLogList;
-    }
 
 }

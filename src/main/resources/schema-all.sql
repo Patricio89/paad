@@ -1,5 +1,4 @@
-DROP DATABASE IF EXISTS sensordb;
-CREATE DATABASE sensordb;
+
 
 DROP TABLE IF EXISTS DateAndTimeLog;
 CREATE TABLE DateAndTimeLog

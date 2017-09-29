@@ -1,8 +1,9 @@
 package sensoremctrl.iotproject.paad.DataManagement;
 
 import com.opencsv.bean.CsvBindByName;
+import org.springframework.stereotype.Component;
 
-
+@Component
 public class DataValue {
 
     @CsvBindByName
