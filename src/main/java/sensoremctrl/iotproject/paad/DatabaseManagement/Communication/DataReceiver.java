@@ -1,26 +1,24 @@
 package sensoremctrl.iotproject.paad.DatabaseManagement.Communication;
 
-import org.springframework.context.annotation.Bean;
+
 import org.springframework.stereotype.Component;
 
 @Component
 public class DataReceiver {
     private String userEmail;
-    private int requestedTemperatureControll;
-    private int requestedHumidityControll;
+    private final int REQUESTED_HUMIDITY_CONTROLL = 33;
+    private final int REQUESTED_TEMPERATURE_CONTROLL = 50;
 
-    @Bean
+
     public String getUserEmail() {
         return userEmail;
     }
 
-    @Bean
     public int getRequestedTemperatureValue() {
-        return requestedTemperatureControll;
+        return this.REQUESTED_HUMIDITY_CONTROLL;
     }
 
-    @Bean
     public int getRequestedHumidityValue() {
-        return requestedHumidityControll;
+        return this.REQUESTED_TEMPERATURE_CONTROLL;
     }
 }

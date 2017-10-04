@@ -3,10 +3,9 @@ package sensoremctrl.iotproject.paad.DataManagement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
+import sensoremctrl.iotproject.paad.Controllers.MailController;
 import sensoremctrl.iotproject.paad.DatabaseManagement.Communication.DataReceiver;
-import sensoremctrl.iotproject.paad.DatabaseManagement.Entities.TemperatureLog;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -18,41 +17,26 @@ public class DataController {
     @Autowired
     private LocalDataStorage localDataStorage;
 
-
-    private List<DataValue> controllList;
-
-
-    @Bean
-    public String controllHumidity(){
-        controllList = localDataStorage.getDataValueList();
-
-        //Replace local variable with DataReciever data once class is functional.
-        int humidityControll = 50;
-        for (int i = 0; i < controllList.size(); i++){
-            int humidity = controllList.get(i).getHumidity();
-            if (humidityControll == humidity){
-
-                System.out.println("Humidity limit met at: " + controllList.get(i).getDateAndTime() + " Humidity that was controlled: " + humidityControll);
-            }
-
-        }
-        return null;
-    }
+    @Autowired
+    private MailController mailController;
 
 
     @Bean
-    public String controllTemperature(){
+    public boolean ControllSensorData() {
+        List<DataValue> controllList;
         controllList = localDataStorage.getDataValueList();
 
-        //Replace local variable with DataReciever data once class is functional.
-        int temperatureControll = 31;
-        for (int i = 0; i < controllList.size(); i++){
+        for (int i = 0; i < controllList.size(); i++) {
             int temperature = controllList.get(i).getTemperature();
-            if (temperatureControll == temperature){
-                System.out.println("Temperature limit met at: " + controllList.get(i).getDateAndTime() + " Temperature that was controlled: " + temperatureControll);
+            int humidity = controllList.get(i).getHumidity();
+            if (dataReceiver.getRequestedTemperatureValue() == temperature
+                    && dataReceiver.getRequestedHumidityValue() == humidity) {
+                mailController.alertMessage();
+                return true;
             }
         }
-        return null;
+        System.out.println("No values over the limit");
+        return false;
     }
 
 
