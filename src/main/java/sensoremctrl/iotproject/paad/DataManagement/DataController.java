@@ -20,23 +20,48 @@ public class DataController {
     @Autowired
     private MailController mailController;
 
+    private List<DataValue> controllList = localDataStorage.getDataValueList();
 
     @Bean
-    public boolean ControllSensorData() {
-        List<DataValue> controllList;
-        controllList = localDataStorage.getDataValueList();
+    public void ControllSensorData() {
+        controllTemperature();
+        controllHumidity();
+    }
 
-        for (int i = 0; i < controllList.size(); i++) {
+    // Clean up code prior to full release --remove println's--
+    private void controllTemperature(){
+        controllList = localDataStorage.getDataValueList();
+        int temperatureControll = dataReceiver.getRequestedTemperatureValue();
+
+        for (int i = 0; i <controllList.size(); i++){
             int temperature = controllList.get(i).getTemperature();
-            int humidity = controllList.get(i).getHumidity();
-            if (dataReceiver.getRequestedTemperatureValue() == temperature
-                    && dataReceiver.getRequestedHumidityValue() == humidity) {
+
+            if (temperatureControll < 10+ temperature || temperatureControll > 10+ temperature){
+                System.out.println("Value limit reached, alerting user. ");
                 mailController.alertMessage();
-                return true;
+            }else {
+                System.out.println("No values reached over the limit.");
+                return;
             }
         }
-        System.out.println("No values over the limit");
-        return false;
+
+    }
+
+    // Clean up code prior to full release --remove println's--
+    private void controllHumidity(){
+        int humidityControll = dataReceiver.getRequestedHumidityValue();
+
+        for (int i = 0; i < controllList.size(); i++){
+            int humidity = controllList.get(i).getHumidity();
+
+            if (humidityControll == humidity){
+                System.out.println("Value limit reached, alerting user. ");
+                mailController.alertMessage();
+            }else   {
+                System.out.println("No values reached over the limit. ");
+                return;
+            }
+        }
     }
 
 

@@ -29,5 +29,6 @@ public class DatabaseLink {
         humidityRepository.save(dataTransfer.storeHumidityLog());
         dateAndTimeRepository.save(dataTransfer.storeTimeStamp());
         return true;
+
     }
 }
