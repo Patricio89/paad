@@ -6,7 +6,8 @@ public class MailUser {
     private String lastName;
     private String emailAddress;
 
-    public MailUser() {
+    public MailUser(String email) {
+        this.emailAddress = email;
     }
 
     public String getFirstName() {
