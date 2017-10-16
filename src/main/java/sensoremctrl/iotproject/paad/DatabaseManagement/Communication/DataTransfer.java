@@ -10,7 +10,6 @@ import sensoremctrl.iotproject.paad.DataManagement.LocalDataStorage;
 import sensoremctrl.iotproject.paad.DatabaseManagement.Entities.DateAndTimeLog;
 import sensoremctrl.iotproject.paad.DatabaseManagement.Entities.HumidityLog;
 import sensoremctrl.iotproject.paad.DatabaseManagement.Entities.TemperatureLog;
-import sensoremctrl.iotproject.paad.EventHandler.MailAlertHandler;
 
 import java.util.ArrayList;
 import java.util.Date;
