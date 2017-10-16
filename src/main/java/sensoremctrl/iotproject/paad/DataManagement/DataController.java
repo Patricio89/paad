@@ -8,7 +8,7 @@ import sensoremctrl.iotproject.paad.DatabaseManagement.Communication.DataReceive
 
 import java.util.List;
 
-@Component
+// @Component
 public class DataController {
 
     @Autowired

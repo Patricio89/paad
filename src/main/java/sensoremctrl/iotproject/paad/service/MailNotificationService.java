@@ -5,14 +5,8 @@ import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
-import sensoremctrl.iotproject.paad.DataManagement.DataController;
-import sensoremctrl.iotproject.paad.DataManagement.DataValue;
-import sensoremctrl.iotproject.paad.DataManagement.LocalDataStorage;
 import sensoremctrl.iotproject.paad.DatabaseManagement.Communication.DataReceiver;
-import sensoremctrl.iotproject.paad.DatabaseManagement.Entities.TemperatureLog;
 import sensoremctrl.iotproject.paad.domain.MailUser;
-
-import java.util.List;
 
 @Service
 public class MailNotificationService {

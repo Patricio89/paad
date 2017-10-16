@@ -7,9 +7,9 @@ import org.springframework.stereotype.Component;
 import sensoremctrl.iotproject.paad.DataManagement.DataProcessor;
 import sensoremctrl.iotproject.paad.DataManagement.DataValue;
 import sensoremctrl.iotproject.paad.DataManagement.LocalDataStorage;
-import sensoremctrl.iotproject.paad.DatabaseManagement.Entities.DateAndTimeLog;
-import sensoremctrl.iotproject.paad.DatabaseManagement.Entities.HumidityLog;
-import sensoremctrl.iotproject.paad.DatabaseManagement.Entities.TemperatureLog;
+import sensoremctrl.iotproject.paad.DatabaseManagement.Entities.DateAndTimeLogg;
+import sensoremctrl.iotproject.paad.DatabaseManagement.Entities.HumidityLogg;
+import sensoremctrl.iotproject.paad.DatabaseManagement.Entities.TemperatureLogg;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -27,45 +27,45 @@ public class DataTransfer {
     private List<DataValue> csvDataValues;
 
     @Bean
-    public List<TemperatureLog> storeTemperatureLog() {
+    public List<TemperatureLogg> storeTemperatureLog() {
         csvDataValues = localDataStorage.getDataValueList();
-        List<TemperatureLog> temperatureLogList = new ArrayList<>();
-        TemperatureLog temperatureLog = new TemperatureLog();
+        List<TemperatureLogg> temperatureLoggList = new ArrayList<>();
+        TemperatureLogg temperatureLogg = new TemperatureLogg();
         int temperature;
         for (int i = 0; i < csvDataValues.size(); i++) {
             temperature = csvDataValues.get(i).getTemperature();
-            temperatureLog.setTemperature(temperature);
-            temperatureLogList.add(new TemperatureLog(temperatureLog.getTemperature()));
+            temperatureLogg.setTemperature(temperature);
+            temperatureLoggList.add(new TemperatureLogg(temperatureLogg.getTemperature()));
         }
-        return temperatureLogList;
+        return temperatureLoggList;
     }
 
     @Bean
-    public List<HumidityLog> storeHumidityLog() {
+    public List<HumidityLogg> storeHumidityLog() {
         csvDataValues = localDataStorage.getDataValueList();
-        List<HumidityLog> humidityLogList = new ArrayList<>();
-        HumidityLog humidityLog = new HumidityLog();
+        List<HumidityLogg> humidityLoggList = new ArrayList<>();
+        HumidityLogg humidityLogg = new HumidityLogg();
         int humidity;
         for (int i = 0; i < csvDataValues.size(); i++) {
             humidity = csvDataValues.get(i).getHumidity();
-            humidityLog.setHumidity(humidity);
-            humidityLogList.add(new HumidityLog(humidityLog.getHumidity()));
+            humidityLogg.setHumidity(humidity);
+            humidityLoggList.add(new HumidityLogg(humidityLogg.getHumidity()));
         }
-        return humidityLogList;
+        return humidityLoggList;
     }
 
     @Bean
-    public List<DateAndTimeLog> storeTimeStamp() {
+    public List<DateAndTimeLogg> storeTimeStamp() {
         csvDataValues = localDataStorage.getDataValueList();
-        List<DateAndTimeLog> dateAndTimeLogList = new ArrayList<>();
-        DateAndTimeLog dateAndTimeLog = new DateAndTimeLog();
+        List<DateAndTimeLogg> dateAndTimeLoggList = new ArrayList<>();
+        DateAndTimeLogg dateAndTimeLogg = new DateAndTimeLogg();
         Date timeStamp;
         for (int i = 0; i < csvDataValues.size(); i++) {
             timeStamp = processor.convertStringToDate(csvDataValues.get(i).getDateAndTime());
-            dateAndTimeLog.setTimeStamp(timeStamp);
-            dateAndTimeLogList.add(new DateAndTimeLog(dateAndTimeLog.getTimeStamp()));
+            dateAndTimeLogg.setTimeStamp(timeStamp);
+            dateAndTimeLoggList.add(new DateAndTimeLogg(dateAndTimeLogg.getTimeStamp()));
         }
-        return dateAndTimeLogList;
+        return dateAndTimeLoggList;
     }
 
 }

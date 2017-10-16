@@ -5,7 +5,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "SupervisedData")
+@Table(name = "superviseddata")
 public class SupervisedData {
 
     @Id
