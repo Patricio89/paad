@@ -5,8 +5,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
 import org.springframework.stereotype.Controller;
+import sensoremctrl.iotproject.paad.DatabaseManagement.Communication.DataReceiver;
 import sensoremctrl.iotproject.paad.DatabaseManagement.Entities.SupervisedData;
-import sensoremctrl.iotproject.paad.domain.MailUser;
 import sensoremctrl.iotproject.paad.service.MailNotificationService;
 
 @Controller
@@ -17,16 +17,17 @@ public class MailController {
     @Autowired
     private MailNotificationService service;
 
+    @Autowired
+    DataReceiver receiver;
+
 
     public void alertMessage() {
+        SupervisedData user = new SupervisedData();
 
-        SupervisedData supervisedData = new SupervisedData();
-        String usersEmail =  supervisedData.getEmail();
+        String usersEmail =  receiver.getUserEmail();
 
-        MailUser user = new MailUser(usersEmail);
-//        user.setFirstName("Adde");
-//        user.setLastName("Padde");
-//        user.setEmailAddress("adrian.wieslander@gmail.com");
+
+        user.setEmail(usersEmail);
 
         try{
             service.sendNotification(user);
