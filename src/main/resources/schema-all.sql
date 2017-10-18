@@ -1,5 +1,9 @@
+DROP DATABASE IF EXISTS sensoremdb;
 
-DROP TABLE SupervisedData;
+CREATE DATABASE sensoremdb;
+
+USE sensoremdb;
+
 CREATE TABLE SupervisedData(
   Email VARCHAR(100),
   Temperature INT DEFAULT NULL,
@@ -7,7 +11,6 @@ CREATE TABLE SupervisedData(
   PRIMARY KEY (Email)
 );
 
-DROP TABLE TemperatureLogg;
 CREATE TABLE TemperatureLogg(
   TemperatureID INT AUTO_INCREMENT,
   Temperature INT NOT NULL,
@@ -15,7 +18,6 @@ CREATE TABLE TemperatureLogg(
   PRIMARY KEY (TemperatureID)
 );
 
-DROP TABLE HumidityLogg;
 CREATE TABLE HumidityLogg(
   HumidityID INT AUTO_INCREMENT,
   Humidity INT NOT NULL,
@@ -23,7 +25,6 @@ CREATE TABLE HumidityLogg(
   PRIMARY KEY (HumidityID)
 );
 
-DROP TABLE DateAndTimeLogg;
 CREATE TABLE DateAndTimeLogg(
   TimeStampID INT AUTO_INCREMENT,
   TimeStamp DATETIME NOT NULL,
@@ -31,7 +32,6 @@ CREATE TABLE DateAndTimeLogg(
   PRIMARY KEY (TimeStampID)
 );
 
-DROP TABLE SensorChart;
 CREATE TABLE SensorChart(
   ChartID INT AUTO_INCREMENT,
   temperature_ID INT,

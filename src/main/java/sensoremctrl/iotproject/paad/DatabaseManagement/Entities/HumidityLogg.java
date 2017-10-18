@@ -4,18 +4,18 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "humiditylog")
-public class HumidityLog implements Serializable {
+@Table(name = "humiditylogg")
+public class HumidityLogg implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int humidityId;
     private int humidity;
 
-    public HumidityLog() {
+    public HumidityLogg() {
     }
 
-    public HumidityLog(int humidity) {
+    public HumidityLogg(int humidity) {
         this.humidity = humidity;
     }
 
@@ -37,7 +37,7 @@ public class HumidityLog implements Serializable {
 
     @Override
     public String toString() {
-        return "HumidityLog{" +
+        return "HumidityLogg{" +
                 "humidity=" + humidity +
                 '}';
     }

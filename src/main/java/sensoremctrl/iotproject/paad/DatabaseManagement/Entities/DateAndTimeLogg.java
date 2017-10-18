@@ -5,8 +5,8 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@Table(name = "dateandtimelog")
-public class DateAndTimeLog implements Serializable {
+@Table(name = "dateandtimelogg")
+public class DateAndTimeLogg implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -15,10 +15,10 @@ public class DateAndTimeLog implements Serializable {
     @Column(name = "timestamp")
     private Date timeStamp;
 
-    public DateAndTimeLog() {
+    public DateAndTimeLogg() {
     }
 
-    public DateAndTimeLog(Date timeStamp) {
+    public DateAndTimeLogg(Date timeStamp) {
         this.timeStamp = timeStamp;
     }
 
@@ -40,7 +40,7 @@ public class DateAndTimeLog implements Serializable {
 
     @Override
     public String toString() {
-        return "DateAndTimeLog{" +
+        return "DateAndTimeLogg{" +
                 "timeStamp=" + timeStamp +
                 '}';
     }

@@ -4,8 +4,8 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "temperaturelog")
-public class TemperatureLog implements Serializable {
+@Table(name = "temperaturelogg")
+public class TemperatureLogg implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -13,10 +13,10 @@ public class TemperatureLog implements Serializable {
     private int temperature;
 
 
-    public TemperatureLog() {
+    public TemperatureLogg() {
     }
 
-    public TemperatureLog(int temperature) {
+    public TemperatureLogg(int temperature) {
         this.temperature = temperature;
     }
 
@@ -38,7 +38,7 @@ public class TemperatureLog implements Serializable {
 
     @Override
     public String toString() {
-        return "TemperatureLog{" +
+        return "TemperatureLogg{" +
                 "temperature=" + temperature +
                 '}';
     }
