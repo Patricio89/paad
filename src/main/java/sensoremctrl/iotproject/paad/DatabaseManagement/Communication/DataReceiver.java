@@ -30,6 +30,7 @@ public class DataReceiver {
     }
 
     public int getRequestedHumidityValue() {
+        repository.findAll();
         return this.REQUESTED_TEMPERATURE_CONTROLL;
     }
 }

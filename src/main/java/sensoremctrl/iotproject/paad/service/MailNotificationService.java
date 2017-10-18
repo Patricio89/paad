@@ -6,7 +6,7 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 import sensoremctrl.iotproject.paad.DatabaseManagement.Communication.DataReceiver;
-import sensoremctrl.iotproject.paad.domain.MailUser;
+import sensoremctrl.iotproject.paad.DatabaseManagement.Entities.SupervisedData;
 
 @Service
 public class MailNotificationService {
@@ -22,9 +22,10 @@ public class MailNotificationService {
     @Autowired
     DataReceiver dataReceiver;
 
-    public void sendNotification(MailUser user) {
+    public void sendNotification(SupervisedData user) {
+
         SimpleMailMessage mail = new SimpleMailMessage();
-        mail.setTo(user.getEmailAddress());
+        mail.setTo(user.getEmail());
         mail.setFrom("paadctrl@gmail.com");
         mail.setSubject("Kontroll från Sense Hat");
         mail.setText("Fuktighet för hög!, uppmätt värde: " + dataReceiver.getRequestedHumidityValue() + "\n" +
