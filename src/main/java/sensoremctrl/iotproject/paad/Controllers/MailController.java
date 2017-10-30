@@ -13,20 +13,18 @@ import sensoremctrl.iotproject.paad.service.MailNotificationService;
 public class MailController {
 
     private Logger log = LoggerFactory.getLogger(MailController.class);
-
-    @Autowired
     private MailNotificationService service;
+    private DataReceiver receiver;
 
-    @Autowired
-    DataReceiver receiver;
-
+    public MailController(MailNotificationService service, DataReceiver receiver) {
+        this.service = service;
+        this.receiver = receiver;
+    }
 
     public void alertMessage() {
         SupervisedData user = new SupervisedData();
 
         String usersEmail =  receiver.getUserEmail();
-
-
         user.setEmail(usersEmail);
 
         try{

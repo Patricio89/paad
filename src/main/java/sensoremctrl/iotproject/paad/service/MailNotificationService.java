@@ -12,15 +12,13 @@ import sensoremctrl.iotproject.paad.DatabaseManagement.Entities.SupervisedData;
 public class MailNotificationService {
 
     private JavaMailSender javaMailSender;
-
+    private DataReceiver dataReceiver;
 
     @Autowired
-    public MailNotificationService(JavaMailSender javaMailSender) throws MailException {
+    public MailNotificationService(JavaMailSender javaMailSender, DataReceiver dataReceiver) throws MailException {
         this.javaMailSender = javaMailSender;
+        this.dataReceiver = dataReceiver;
     }
-
-    @Autowired
-    DataReceiver dataReceiver;
 
     public void sendNotification(SupervisedData user) {
 

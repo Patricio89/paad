@@ -8,33 +8,36 @@ import sensoremctrl.iotproject.paad.DatabaseManagement.Communication.DataReceive
 
 import java.util.List;
 
-// @Component
+@Component
 public class DataController {
-
-    @Autowired
     private DataReceiver dataReceiver;
-
-    @Autowired
     private LocalDataStorage localDataStorage;
+    private MailController mailController;
+    private List<DataValue> controlList;
 
     @Autowired
-    private MailController mailController;
+    public DataController(DataReceiver dataReceiver,
+                          LocalDataStorage localDataStorage,
+                          MailController mailController) {
+        this.dataReceiver = dataReceiver;
+        this.localDataStorage = localDataStorage;
+        this.mailController = mailController;
 
-    private List<DataValue> controllList = localDataStorage.getDataValueList();
+    }
 
-    @Bean
-    public void ControllSensorData() {
-        controllTemperature();
-        controllHumidity();
+    public void ControlSensorData() {
+        controlTemperature();
+        controlHumidity();
+
     }
 
     // Clean up code prior to full release --remove println's--
-    private void controllTemperature(){
-        controllList = localDataStorage.getDataValueList();
+    private void controlTemperature(){
+        controlList = localDataStorage.getDataValueList();
         int temperatureControll = dataReceiver.getRequestedTemperatureValue();
 
-        for (int i = 0; i <controllList.size(); i++){
-            int temperature = controllList.get(i).getTemperature();
+        for (int i = 0; i < controlList.size(); i++){
+            int temperature = controlList.get(i).getTemperature();
 
             if (temperatureControll < 10+ temperature || temperatureControll > 10+ temperature){
                 System.out.println("Value limit reached, alerting user. ");
@@ -48,11 +51,11 @@ public class DataController {
     }
 
     // Clean up code prior to full release --remove println's--
-    private void controllHumidity(){
+    private void controlHumidity(){
         int humidityControll = dataReceiver.getRequestedHumidityValue();
 
-        for (int i = 0; i < controllList.size(); i++){
-            int humidity = controllList.get(i).getHumidity();
+        for (int i = 0; i < controlList.size(); i++){
+            int humidity = controlList.get(i).getHumidity();
 
             if (humidityControll == humidity){
                 System.out.println("Value limit reached, alerting user. ");

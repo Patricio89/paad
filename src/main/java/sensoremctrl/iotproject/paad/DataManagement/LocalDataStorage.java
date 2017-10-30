@@ -9,12 +9,15 @@ import java.util.*;
 @Component
 public class LocalDataStorage {
 
-    @Autowired
     private DataLogger dataLogger;
+
+    @Autowired
+    public LocalDataStorage(DataLogger dataLogger) {
+        this.dataLogger = dataLogger;
+    }
 
     @Bean
     public List<DataValue> getDataValueList() {
-        List<DataValue> csvDataList = dataLogger.readCsv();
-        return csvDataList;
+        return dataLogger.readCsv();
     }
 }

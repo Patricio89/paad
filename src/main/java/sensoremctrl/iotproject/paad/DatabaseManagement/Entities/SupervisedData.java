@@ -10,7 +10,6 @@ public class SupervisedData {
 
     @Id
     private String email;
-
     private int temperature;
     private int humidity;
 

@@ -3,6 +3,9 @@ package sensoremctrl.iotproject.paad.DataManagement;
 import com.opencsv.bean.CsvBindByName;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
 public class DataValue {
 
@@ -38,6 +41,4 @@ public class DataValue {
     public String getDateAndTime() {
         return dateAndTime;
     }
-
-
 }

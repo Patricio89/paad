@@ -11,12 +11,15 @@ import java.util.List;
 @Component
 public class DataReceiver {
 
-    @Autowired
-    private SupervisedDataRepository repository;
     private String userEmail;
     private final int REQUESTED_HUMIDITY_CONTROLL = 33;
     private final int REQUESTED_TEMPERATURE_CONTROLL = 50;
+    private SupervisedDataRepository repository;
 
+    @Autowired
+    public DataReceiver(SupervisedDataRepository repository) {
+        this.repository = repository;
+    }
 
 
     public String getUserEmail() {

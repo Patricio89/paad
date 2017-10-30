@@ -10,17 +10,24 @@ import sensoremctrl.iotproject.paad.Model.TemperatureRepository;
 @Component
 public class DatabaseLink {
 
-    @Autowired
-    TemperatureRepository temperatureRepository;
+
+    private TemperatureRepository temperatureRepository;
+    private HumidityRepository humidityRepository;
+    private DateAndTimeRepository dateAndTimeRepository;
+    private DataTransfer dataTransfer;
 
     @Autowired
-    HumidityRepository humidityRepository;
+    public DatabaseLink(TemperatureRepository temperatureRepository,
+                        HumidityRepository humidityRepository,
+                        DateAndTimeRepository dateAndTimeRepository,
+                        DataTransfer dataTransfer) {
 
-    @Autowired
-    DateAndTimeRepository dateAndTimeRepository;
+        this.temperatureRepository = temperatureRepository;
+        this.humidityRepository = humidityRepository;
+        this.dateAndTimeRepository = dateAndTimeRepository;
+        this.dataTransfer = dataTransfer;
 
-    @Autowired
-    DataTransfer dataTransfer;
+    }
 
     // Make if statement to controller if method returns null etc.
     @Bean
