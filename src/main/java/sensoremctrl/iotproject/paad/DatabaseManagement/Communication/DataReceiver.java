@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 import sensoremctrl.iotproject.paad.DatabaseManagement.Entities.SupervisedData;
 import sensoremctrl.iotproject.paad.Model.SupervisedDataRepository;
 
+import java.util.HashMap;
 import java.util.List;
 
 @Component
@@ -14,8 +15,10 @@ public class DataReceiver {
     @Autowired
     private SupervisedDataRepository repository;
     private String userEmail;
-    private final int REQUESTED_HUMIDITY_CONTROLL = 33;
-    private final int REQUESTED_TEMPERATURE_CONTROLL = 50;
+    private int REQUESTED_HUMIDITY_CONTROLL;
+    private int REQUESTED_TEMPERATURE_CONTROLL;
+
+    private HashMap<String, Integer> userList = new HashMap<String, Integer>();
 
 
 
