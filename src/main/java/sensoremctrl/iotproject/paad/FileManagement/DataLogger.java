@@ -27,4 +27,8 @@ public class DataLogger {
 
         return csvData;
     }
+
+    public void clearList(){
+        csvData.clear();
+    }
 }

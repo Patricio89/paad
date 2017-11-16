@@ -3,6 +3,8 @@ package sensoremctrl.iotproject.paad.DatabaseManagement.Communication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
+import sensoremctrl.iotproject.paad.DataManagement.Cleaner;
+import sensoremctrl.iotproject.paad.FileManagement.DataLogger;
 import sensoremctrl.iotproject.paad.Model.DateAndTimeRepository;
 import sensoremctrl.iotproject.paad.Model.HumidityRepository;
 import sensoremctrl.iotproject.paad.Model.TemperatureRepository;
@@ -15,6 +17,9 @@ public class DatabaseLink {
     private HumidityRepository humidityRepository;
     private DateAndTimeRepository dateAndTimeRepository;
     private DataTransfer dataTransfer;
+
+    @Autowired
+    Cleaner cleaner;
 
     @Autowired
     public DatabaseLink(TemperatureRepository temperatureRepository,
@@ -35,6 +40,7 @@ public class DatabaseLink {
         temperatureRepository.save(dataTransfer.storeTemperatureLog());
         humidityRepository.save(dataTransfer.storeHumidityLog());
         dateAndTimeRepository.save(dataTransfer.storeTimeStamp());
+        cleaner.purgeLists();
         return true;
 
     }

@@ -25,11 +25,14 @@ public class DataTransfer {
     DataProcessor processor;
 
     private List<DataValue> csvDataValues;
+    private List<TemperatureLogg> temperatureLoggList = new ArrayList<>();
+    private List<HumidityLogg> humidityLoggList = new ArrayList<>();
+    private List<DateAndTimeLogg> dateAndTimeLoggList = new ArrayList<>();
 
     @Bean
     public List<TemperatureLogg> storeTemperatureLog() {
         csvDataValues = localDataStorage.getDataValueList();
-        List<TemperatureLogg> temperatureLoggList = new ArrayList<>();
+
         TemperatureLogg temperatureLogg = new TemperatureLogg();
         int temperature;
         for (int i = 0; i < csvDataValues.size(); i++) {
@@ -43,7 +46,7 @@ public class DataTransfer {
     @Bean
     public List<HumidityLogg> storeHumidityLog() {
         csvDataValues = localDataStorage.getDataValueList();
-        List<HumidityLogg> humidityLoggList = new ArrayList<>();
+
         HumidityLogg humidityLogg = new HumidityLogg();
         int humidity;
         for (int i = 0; i < csvDataValues.size(); i++) {
@@ -57,7 +60,7 @@ public class DataTransfer {
     @Bean
     public List<DateAndTimeLogg> storeTimeStamp() {
         csvDataValues = localDataStorage.getDataValueList();
-        List<DateAndTimeLogg> dateAndTimeLoggList = new ArrayList<>();
+
         DateAndTimeLogg dateAndTimeLogg = new DateAndTimeLogg();
         Date timeStamp;
         for (int i = 0; i < csvDataValues.size(); i++) {
@@ -66,6 +69,14 @@ public class DataTransfer {
             dateAndTimeLoggList.add(new DateAndTimeLogg(dateAndTimeLogg.getTimeStamp()));
         }
         return dateAndTimeLoggList;
+    }
+
+
+    public void clearLists(){
+        dateAndTimeLoggList.clear();
+        humidityLoggList.clear();
+        temperatureLoggList.clear();
+        csvDataValues.clear();
     }
 
 }

@@ -1,23 +1,22 @@
-package sensoremctrl.iotproject.paad.Listners;
+package sensoremctrl.iotproject.paad.Listeners;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringApplication;
 import org.springframework.stereotype.Component;
+import sensoremctrl.iotproject.paad.PaadApplication;
 
 import java.io.IOException;
 import java.nio.file.*;
 
 @Component
-public class CsvListener implements Runnable{
+public class CsvListener{
 
-    protected WatchService csvWatcher;
-    protected Path path;
-    protected WatchKey key;
+    private WatchService csvWatcher;
 
 
-        private void createWatcher(){
+    private void createWatcher(){
             try {
                 csvWatcher = FileSystems.getDefault().newWatchService();
-                path = Paths.get("C:\\Users\\patri\\Desktop\\testWatcher");
+                Path path = Paths.get("C:\\Users\\patri\\Desktop\\testWatcher");
                 path.register(csvWatcher,
                         StandardWatchEventKinds.ENTRY_CREATE,
                         StandardWatchEventKinds.ENTRY_MODIFY);
@@ -28,10 +27,11 @@ public class CsvListener implements Runnable{
 
          private void checkOnCreateAndModify(){
              try {
+                 WatchKey key;
                  while((key = csvWatcher.take()) !=null){
                      for (WatchEvent<?> event : key.pollEvents()){
 
-                         //Härinne skickar PAAD iväg data till databasen.
+                         SpringApplication.run(PaadApplication.class);
 
                          System.out.println("Event that happened: " + event.kind() + " File affected: " + event.context());
                      }
@@ -42,8 +42,6 @@ public class CsvListener implements Runnable{
              }
          }
 
-
-    @Override
     public void run() {
              createWatcher();
              checkOnCreateAndModify();

@@ -1,20 +1,23 @@
-package sensoremctrl.iotproject.paad.DatabaseManagement.Entities;
+package sensoremctrl.iotproject.paad.DataManagement;
 
-import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+/**
+ * This class set's up values that the user want's to get notified for.
+ */
 
-@Entity
-@EnableJpaAuditing
-@Table(name = "superviseddata")
-public class SupervisedData {
 
-    @Id
+public class UserData {
+
     private String email;
     private int temperature;
     private int humidity;
+
+
+    public UserData(String email, int temperature, int humidity) {
+        this.email = email;
+        this.temperature = temperature;
+        this.humidity = humidity;
+    }
 
     public String getEmail() {
         return email;

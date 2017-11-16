@@ -14,6 +14,7 @@ public class MailController {
 
     private Logger log = LoggerFactory.getLogger(MailController.class);
     private MailNotificationService service;
+    //use UserData instead, local object with fields of email, temp, humid
     private DataReceiver receiver;
 
     public MailController(MailNotificationService service, DataReceiver receiver) {
