@@ -45,7 +45,7 @@ Adrian Wieslander - Junior Software Developer/Student - Github: https://github.c
 Patricio Morales - Junior Software Developer/Student - Github: https://github.com/Patricio89
 
 License:
-© Patricio Morales
-© Adrian Wieslander
-B3IT Innovation AB © Johnne Adermark
-B3IT Innovation AB © Kenneth Andersson
+© Patricio Morales.
+© Adrian Wieslander.
+B3IT Innovation AB © Johnne Adermark.
+B3IT Innovation AB © Kenneth Andersson.
