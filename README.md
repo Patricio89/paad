@@ -53,6 +53,9 @@ Application will generate the DDL towards the directory of your database.
 
 
 Contribute:
+Dynamic implementation such as a working listener for desired database table and how to trigger a iteration of the application 
+for the .CSV listener. 
+
 Credits:
 Fully developed by:
 Adrian Wieslander - Junior Software Developer/Student - Github: https://github.com/AdrWie
