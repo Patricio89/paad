@@ -56,7 +56,7 @@ for the .CSV listener.
 * Patricio Morales - Junior Software Developer/Student
 
 License:
-* Intern - Software Developer (Student) CC [Patricio Morales](https://github.com/Patricio89)
-* Intern - Software Developer (Student) CC [Adrian Wieslander](https://github.com/AdrWie)
-* B3IT Innovation AB CC [Johnne Adermark]()
-* B3IT Innovation AB CC [Kenneth Andersson]()
+* Intern - Software Developer (Student) CC By [Patricio Morales](https://github.com/Patricio89)
+* Intern - Software Developer (Student) CC By [Adrian Wieslander](https://github.com/AdrWie)
+* B3IT Innovation AB CC By [Johnne Adermark]()
+* B3IT Innovation AB CC By [Kenneth Andersson]()
