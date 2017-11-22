@@ -55,8 +55,8 @@ for the .CSV listener.
 * Adrian Wieslander - Junior Software Developer/Student
 * Patricio Morales - Junior Software Developer/Student
 
-License:
-Project is open source and may be used as pleased - credits to original author.
+## License:
+Project is open source and may be used as pleased - credits to original authors.
 
 * Intern - Software Developer (Student) CC By [Patricio Morales](https://github.com/Patricio89)
 * Intern - Software Developer (Student) CC By [Adrian Wieslander](https://github.com/AdrWie)
