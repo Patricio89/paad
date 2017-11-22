@@ -1,7 +1,7 @@
 # paad
 Lia 1 Project: SensoremCtrl
 
-Motivation:
+## Motivation:
 Inhouse Project for B3IT Innovation AB - Requested by supervisors Johnne Adermark & Kenneth Andersson,
 as an internship assignment.
 - Gather data from a raspberry pi device with a attached SenseHat sensor.
@@ -12,7 +12,7 @@ as an internship assignment.
 As the file gets generated or modified, this application will during the retrieval of new data, also make a controll of the supervised values. 
 
 
-Build status:
+## Build status:
 One time interation of the application - Functional.
 Dynamic solution - failing.
 Generation of DDL towards DB location (If non existent) - Functional
@@ -23,7 +23,7 @@ Hibernate Interceptor (Database Listener) - failing.
 Manual functionality with dynamic implementation (missing mapping & db listener). 
 
 
-Code style:
+## Code style:
 Standard
 
 Tech/framework used:
@@ -34,15 +34,15 @@ OpenCSV Library
 Spring-Mail
 
 
-Installation:
+## Installation:
 Build and deploy to desired device e.g. Rasperry PI.
 
-API Reference:
+## API Reference:
 
-Tests:
-None.
+## Tests:
+<b>None.</b>
 
-How to use?
+## How to use?
 Deploy current build before use.
 
 Modify .properties file ->
@@ -52,17 +52,16 @@ Application will parse and store temperature and relative humidity data towards 
 Application will generate the DDL towards the directory of your database.
 
 
-Contribute:
+## Contribute:
 Dynamic implementation such as a working listener for desired database table and how to trigger a iteration of the application 
 for the .CSV listener. 
 
-Credits:
-Fully developed by:
-Adrian Wieslander - Junior Software Developer/Student - Github: https://github.com/AdrWie
-Patricio Morales - Junior Software Developer/Student - Github: https://github.com/Patricio89
+## Credits:
+* Adrian Wieslander - Junior Software Developer/Student
+* Patricio Morales - Junior Software Developer/Student
 
 License:
-© Patricio Morales.
-© Adrian Wieslander.
-B3IT Innovation AB © Johnne Adermark.
-B3IT Innovation AB © Kenneth Andersson.
+* Intern - Software Developer (Student) © [Patricio Morales](https://github.com/Patricio89)
+* Intern - Software Developer (Student) © [Adrian Wieslander](https://github.com/AdrWie)
+* B3IT Innovation AB © [Johnne Adermark]()
+* B3IT Innovation AB © [Kenneth Andersson]()
