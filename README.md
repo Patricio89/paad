@@ -45,7 +45,7 @@ Build and deploy to desired device e.g. Rasperry PI.
 ## How to use?
 Deploy current build before use.
 
-Modify .properties file ->
+Modify properties file ->
 Edit directory for database & .csv directory for retrieval of data (Manually).
 Application will parse and store temperature and relative humidity data towards directed database (MySQL).
 ------
