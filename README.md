@@ -27,11 +27,11 @@ Manual functionality with dynamic implementation (missing mapping & db listener)
 Standard
 
 Tech/framework used:
-Spring-Boot
-Hibernate
-Spring-JPA 
-OpenCSV Library
-Spring-Mail
+- [Spring-Boot](https://projects.spring.io/spring-boot/)
+- [Hibernate](http://hibernate.org/)
+- [Spring-JPA](https://projects.spring.io/spring-framework/)
+- [OpenCSV Library](http://opencsv.sourceforge.net/)
+- [Spring-Mail](https://projects.spring.io/spring-framework/)
 
 
 ## Installation:
@@ -43,14 +43,9 @@ Build and deploy to desired device e.g. Rasperry PI.
 <b>None.</b>
 
 ## How to use?
-Deploy current build before use.
-
-Modify properties file ->
-Edit directory for database & .csv directory for retrieval of data (Manually).
-Application will parse and store temperature and relative humidity data towards directed database (MySQL).
-------
+Modify properties file and edit directory for database & .csv directory for retrieval of data (Manually).
 Application will generate the DDL towards the directory of your database.
-
+Run application
 
 ## Contribute:
 Dynamic implementation such as a working listener for desired database table and how to trigger a iteration of the application 
