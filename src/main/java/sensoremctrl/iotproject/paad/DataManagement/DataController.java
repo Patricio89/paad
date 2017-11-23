@@ -25,8 +25,8 @@ public class DataController {
 
     }
 
-    @Autowired
-    UserData user;
+//    @Autowired
+//    UserData user;
 
     public void ControlSensorData() {
         controlTemperature();
